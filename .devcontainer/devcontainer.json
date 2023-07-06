@@ -1,0 +1,9 @@
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:0-3.11",
+	"runArgs": [
+		"--env=DISPLAY",
+		"--volume=/tmp/.X11-unix:/tmp/.X11-unix"
+	],
+	"postCreateCommand": "pip install --user --upgrade pip && pip install --user -r requirements.txt"
+}
