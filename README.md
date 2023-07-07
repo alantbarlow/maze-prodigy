@@ -6,10 +6,10 @@
 
 
 ## Table of Contents
+<!-- * [Screenshots](#screenshots) -->
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
 * [Features](#features)
-<!-- * [Screenshots](#screenshots) -->
 * [Setting Up Your Dev Environment](#setting-up-your-dev-environment)
 * [Usage](#usage)
 * [Project Status](#project-status)
@@ -18,6 +18,10 @@
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
+<!--
+## Screenshots
+![Example screenshot](./img/screenshot.png)
+-->
 
 ## General Information
 This game was created for Maze lovers and people who want to improve their problem-solving, decision-making, and their logical thinking skills. With an endless amount of procedurally generated mazes, you can keep yourself entertained while improving the speed and accuracy of your decisions. 
@@ -42,11 +46,6 @@ Feel free to explore the project's codebase to see how these technologies are ut
 3. **Keyboard Controls**: Use the arrow keys on your keyboard to maneuver through the maze and find the exit. The intuitive controls make it easy to navigate through the maze and complete the challenge.
 4. **Speed and Accuracy Tracking**: The Maze Solver project keeps track of your solving speed and accuracy, providing you with valuable feedback on your performance. You can analyze your results and aim for improvement with each attempt.
 
-<!--
-## Screenshots
-![Example screenshot](./img/screenshot.png)
--->
-
 ## Setting Up Your Dev Environment
 If you want to modify this project to fit your own needs, the recommended method to do so is to open this project in a docker development container. The following are the requirements to get this set up on your machine: 
 
@@ -58,7 +57,7 @@ If you want to modify this project to fit your own needs, the recommended method
 
 Once you have installed the requirements, you can get started by opening VSCode, going to the Remote Explorer, and adding a new Dev Container. Just press "Clone Repository in Container Volume" and put paste the URL of this repo. This should create the dev container with all the project dependancies and open the project in your workspace. 
 
-To run the project you can either type `python maze_prodigy` or you can navigate to "maze_prodigy/__main__.py" and pressing "Debug Python File" in the upper right side of the VSCode window.
+To run the project you can either type `python maze_prodigy` or you can navigate to "maze_prodigy/\__main__.py" and pressing "Debug Python File" in the upper right side of the VSCode window.
 
 
 ## Project Status
