@@ -20,7 +20,7 @@ jobs:
                       ASSET_NAME: Maze_Prodigy.exe
                       RUN_CMD: pyinstaller maze_prodigy/__main__.py --name "Maze_Prodigy" --onefile --windowed 
         permissions:
-          deployments: write
+          contents: write
         steps:
             - name: Checkout Code
               uses: actions/checkout@v3
