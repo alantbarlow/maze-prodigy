@@ -11,16 +11,17 @@ jobs:
                 include:
                     - OS_VERSION: macos-latest
                       OS_NAME: MacOS
-                      ASSET_NAME: Maze_Prodigy.zip
-                      RUN_CMD: pyinstaller maze_prodigy/__main__.py --name "Maze_Prodigy" --onefile --windowed &&
-                        cd dist/ &&
-                        zip -r9 Maze_Prodigy Maze_Prodigy.app/                
+                      ASSET_EXTENSION: zip
+                      ADDITIONAL_CMD_ARGS: --add_data "assets:." --target-arch "universal2" && cd dist/ && zip -r9 "Maze Prodigy - MacOS" Maze Prodigy - MacOS.app/
                     - OS_VERSION: windows-latest
                       OS_NAME: Windows
-                      ASSET_NAME: Maze_Prodigy.exe
-                      RUN_CMD: pyinstaller maze_prodigy/__main__.py --name "Maze_Prodigy" --onefile --windowed 
+                      ASSET_EXTENSION: exe
+                      ADDITIONAL_CMD_ARGS: --add_data "assets;."
         permissions:
           contents: write
+        env:
+          ASSET_NAME: Maze Prodigy - ${{ matrix.OS_NAME }}
+          ASSET_NAME_WITH_EXTENSION: Maze Prodigy - ${{ matrix.OS_NAME }}.${{ matrix.ASSET_EXTENSION }}
         steps:
             - name: Checkout Code
               uses: actions/checkout@v3
@@ -34,11 +35,10 @@ jobs:
                 pip install -r requirements.txt
                 pip install pyinstaller
             - name: Create Release Asset with Pyinstaller
-              run: ${{ matrix.RUN_CMD }}
+              run: pyinstaller maze_prodigy/__main.py --name "${{ env.ASSET_NAME }}" --onefile --windowed ${{ matrix.ADDITIONAL_CMD_ARGS }}
             - name: Upload Release Asset
-              id: upload-release-asset
               uses: shogo82148/actions-upload-release-asset@v1
               with:
                 upload_url: ${{ github.event.release.upload_url }}
-                asset_path: ./dist/${{ matrix.ASSET_NAME }}
-                asset_name: ${{ matrix.ASSET_NAME }}
+                asset_path: ./dist/${{ env.ASSET_NAME_WITH_EXTENSION }}
+                asset_name: ${{ env.ASSET_NAME_WITH_EXTENSION }}
