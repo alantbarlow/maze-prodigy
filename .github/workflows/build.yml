@@ -35,7 +35,7 @@ jobs:
                 pip install -r requirements.txt
                 pip install pyinstaller
             - name: Create Release Asset with Pyinstaller
-              run: pyinstaller maze_prodigy/__main.py --name "${{ env.ASSET_NAME }}" --onefile --windowed ${{ matrix.ADDITIONAL_CMD_ARGS }}
+              run: pyinstaller maze_prodigy/__main__.py --name "${{ env.ASSET_NAME }}" --onefile --windowed ${{ matrix.ADDITIONAL_CMD_ARGS }}
             - name: Upload Release Asset
               uses: shogo82148/actions-upload-release-asset@v1
               with:
