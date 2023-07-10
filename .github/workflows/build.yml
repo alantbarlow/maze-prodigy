@@ -12,7 +12,7 @@ jobs:
                     - OS_VERSION: macos-latest
                       OS_NAME: MacOS
                       ASSET_EXTENSION: zip
-                      ADDITIONAL_CMD_ARGS: --add-data "maze_prodigy/assets:." --target-arch "universal2" && cd dist/ && zip -r9 "Maze Prodigy - MacOS" "Maze Prodigy - MacOS.app/"
+                      ADDITIONAL_CMD_ARGS: --add-data "maze_prodigy/assets:." && cd dist/ && zip -r9 "Maze Prodigy - MacOS" "Maze Prodigy - MacOS.app/"
                     - OS_VERSION: windows-latest
                       OS_NAME: Windows
                       ASSET_EXTENSION: exe
