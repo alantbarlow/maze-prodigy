@@ -1,5 +1,6 @@
-from os import path
+from pkgutil import get_data
 from typing import TYPE_CHECKING
+from io import BytesIO
 
 from customtkinter import CTkImage
 from PIL import Image, ImageTk
@@ -9,10 +10,8 @@ if TYPE_CHECKING:
 
 
 def get_image(file_name: str, dimensions: "Dimensions", canvas_mode: bool = False ) -> CTkImage | ImageTk.PhotoImage:
-    current_path = path.abspath(path.dirname(__file__))
-    file_path = path.join(current_path, file_name)
-
-    image = Image.open(file_path)
+    image_data = get_data(__name__, file_name)
+    image = Image.open(BytesIO(image_data))
     
     if canvas_mode:
         return ImageTk.PhotoImage(image.resize((dimensions.width, dimensions.height)))
