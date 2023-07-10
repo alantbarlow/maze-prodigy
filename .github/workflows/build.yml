@@ -11,10 +11,10 @@ jobs:
                 include:
                     - OS_VERSION: macos-latest
                       OS_NAME: MacOS
-                      ASSET_PATH: "maze_prodigy/assets:."
+                      ASSET_PATH: maze_prodigy/assets:.
                     - OS_VERSION: windows-latest
                       OS_NAME: Windows
-                      ASSET_PATH: "maze_prodigy/assets;."
+                      ASSET_PATH: maze_prodigy/assets;.
         permissions:
           contents: write
         env:
@@ -33,7 +33,7 @@ jobs:
                 pip install -r requirements.txt
                 pip install pyinstaller
             - name: Create Release Asset with Pyinstaller
-              run: pyinstaller maze_prodigy/__main__.py --name "${{ env.ASSET_NAME }}" --onefile --windowed --add-data ${{ matrix.ASSET_PATH }}
+              run: pyinstaller maze_prodigy/__main__.py --name "${{ env.ASSET_NAME }}" --onefile --windowed --add-data "${{ matrix.ASSET_PATH }}"
             - name: Archive Release Assets
               uses: thedoctor0/zip-release@0.7.1
               with:
