@@ -38,7 +38,7 @@ jobs:
               uses: thedoctor0/zip-release@0.7.1
               with:
                 filename: ${{ env.ASSET_NAME_WITH_EXTENSION }}
-                path: "dist"
+                path: "."
             - name: Upload Release Asset
               uses: shogo82148/actions-upload-release-asset@v1
               with:
