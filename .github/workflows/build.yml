@@ -11,10 +11,10 @@ jobs:
                 include:
                     - OS_VERSION: macos-latest
                       OS_NAME: MacOS
-                      ASSET_PATH: maze_prodigy/assets:.
+                      ASSET_PATH: maze_prodigy/assets/themes/*.json:themes
                     - OS_VERSION: windows-latest
                       OS_NAME: Windows
-                      ASSET_PATH: maze_prodigy/assets;.
+                      ASSET_PATH: maze_prodigy/assets/themes/*.json;themes
         permissions:
           contents: write
         env:
