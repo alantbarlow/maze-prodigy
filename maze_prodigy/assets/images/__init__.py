@@ -1,4 +1,4 @@
-import os
+from os import path
 from typing import TYPE_CHECKING
 
 from customtkinter import CTkImage
@@ -9,8 +9,8 @@ if TYPE_CHECKING:
 
 
 def get_image(file_name: str, dimensions: "Dimensions", canvas_mode: bool = False ) -> CTkImage | ImageTk.PhotoImage:
-    current_path = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(current_path, file_name)
+    current_path = path.abspath(path.dirname(__file__))
+    file_path = path.join(current_path, file_name)
 
     image = Image.open(file_path)
     
