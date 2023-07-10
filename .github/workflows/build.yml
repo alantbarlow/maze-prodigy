@@ -11,7 +11,7 @@ jobs:
                 include:
                     - OS_VERSION: macos-latest
                       OS_NAME: MacOS
-                      ASSET_PATH_DIVIDER: "maze_prodigy/assets:."
+                      ASSET_PATH: "maze_prodigy/assets:."
                     - OS_VERSION: windows-latest
                       OS_NAME: Windows
                       ASSET_PATH: "maze_prodigy/assets;."
