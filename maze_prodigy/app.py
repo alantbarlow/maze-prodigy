@@ -72,8 +72,10 @@ class App(Stateful):
         window.title(self.__APP_TITLE)
         #window.attributes("-fullscreen", True)
         window.geometry("{}x{}".format(
-            window.winfo_screenwidth(), 
-            window.winfo_screenheight(), 
+            #window.winfo_screenwidth(), 
+            #window.winfo_screenheight(),
+            1000,
+            1000 
         ))
         window.resizable(width = False, height = False)
 
