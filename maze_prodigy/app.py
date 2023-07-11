@@ -1,7 +1,9 @@
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
+import sys
 
 import customtkinter
+from screeninfo import get_monitors, Enumerator
 
 from assets.themes import get_theme_path
 from controllers import MenuController, MazeController, ResultController
@@ -71,12 +73,13 @@ class App(Stateful):
 
         window.title(self.__APP_TITLE)
         #window.attributes("-fullscreen", True)
-        window.geometry("{}x{}".format(
-            #window.winfo_screenwidth(), 
-            #window.winfo_screenheight(),
-            1000,
-            1000 
-        ))
+
+        if getattr(sys, 'frozen', False):
+            screen = get_monitors()[0]
+        else:
+            screen = Dimensions(window.winfo_screenheight(), window.winfo_screenwidth())
+            
+        window.geometry("{}x{}".format(screen.width, screen.height))
         window.resizable(width = False, height = False)
 
         return window
