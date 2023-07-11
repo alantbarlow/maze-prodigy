@@ -70,7 +70,7 @@ class App(Stateful):
         customtkinter.set_appearance_mode("dark")
 
         window.title(self.__APP_TITLE)
-        window.attributes("-fullscreen", True)
+        #window.attributes("-fullscreen", True)
         window.geometry("{}x{}".format(
             window.winfo_screenwidth(), 
             window.winfo_screenheight(), 
