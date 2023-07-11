@@ -1,0 +1,17 @@
+name: Create Release
+
+on:
+  pull_request:
+    branches: [ 'main' ]
+    types: [ 'closed' ]
+
+jobs:
+  create_release:
+    if: github.event.pull_request.merged == 'true'
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rymndhng/release-on-push-action@v0.28.0
+        with:
+          bump_version_scheme: norelease
+          release_name: 'Release <RELEASE_TAG>'
