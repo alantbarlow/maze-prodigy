@@ -74,12 +74,23 @@ class App(Stateful):
         window.title(self.__APP_TITLE)
         #window.attributes("-fullscreen", True)
 
+        window.overrideredirect(True)
+
+        # Remove the title bar on macOS
+        
+
         if getattr(sys, 'frozen', False):
-            window.attributes("-zoomed", True)
+            
+            if sys.platform() == 'win32':
+                window.state("zoomed")
+            window.attributes("-fullscreen", True)
+            
         else:
             screen = Dimensions(window.winfo_screenheight(), window.winfo_screenwidth())
             window.geometry("{}x{}".format(screen.width, screen.height))
+
         window.resizable(width = False, height = False)
+        
 
         return window
     
