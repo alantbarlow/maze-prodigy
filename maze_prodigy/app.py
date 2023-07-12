@@ -77,7 +77,7 @@ class App(Stateful):
 
         if getattr(sys, 'frozen', False):
             
-            if sys.platform() == 'win32':
+            if sys.platform == 'win32':
                 window.state("zoomed")
             window.attributes("-fullscreen", True)
             
