@@ -73,10 +73,6 @@ class App(Stateful):
 
         window.title(self.__APP_TITLE)
         #window.attributes("-fullscreen", True)
-
-        window.overrideredirect(True)
-
-        # Remove the title bar on macOS
         
 
         if getattr(sys, 'frozen', False):
