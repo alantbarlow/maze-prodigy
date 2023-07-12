@@ -75,11 +75,10 @@ class App(Stateful):
         #window.attributes("-fullscreen", True)
 
         if getattr(sys, 'frozen', False):
-            screen = get_monitors()[0]
+            window.attributes("-zoomed", True)
         else:
             screen = Dimensions(window.winfo_screenheight(), window.winfo_screenwidth())
-            
-        window.geometry("{}x{}".format(screen.width, screen.height))
+            window.geometry("{}x{}".format(screen.width, screen.height))
         window.resizable(width = False, height = False)
 
         return window
