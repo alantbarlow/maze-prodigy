@@ -11,15 +11,15 @@ jobs:
                 include:
                     - OS_VERSION: macos-latest
                       OS_NAME: MacOS
-                      ASSET_PATH: maze_prodigy/assets/themes/*.json:themes
+                      DATA_SEPARATOR: ":"
                     - OS_VERSION: windows-latest
                       OS_NAME: Windows
-                      ASSET_PATH: maze_prodigy/assets/themes/*.json;themes
+                      DATA_SEPARATOR: ";"
         permissions:
           contents: write
         env:
-          ASSET_NAME: MazeProdigy-${{ matrix.OS_NAME }}
-          ASSET_NAME_WITH_EXTENSION: MazeProdigy-${{ matrix.OS_NAME }}.zip
+          EXE_FILE_NAME: MazeProdigy
+          ZIP_FILE_NAME: MazeProdigy-${{ matrix.OS_NAME }}.zip
         steps:
             - name: Checkout Code
               uses: actions/checkout@v3
@@ -33,15 +33,17 @@ jobs:
                 pip install -r requirements.txt
                 pip install pyinstaller
             - name: Create Release Asset with Pyinstaller
-              run: pyinstaller maze_prodigy/__main__.py --name "${{ env.ASSET_NAME }}" --windowed --add-data "${{ matrix.ASSET_PATH }}"
+              run: pyinstaller maze_prodigy/__main__.py --name "${{ env.EXE_FILE_NAME }}" --windowed --one-file
+                --add-data "maze_prodigy/assets/themes/*.json${{ matrix.DATA_SEPARATOR }}themes"
+                --add-data "maze_prodigy/assets/images/*.png${{ matrix.DATA_SEPARATOR }}images"
             - name: Archive Release Assets
               uses: thedoctor0/zip-release@0.7.1
               with:
-                filename: ${{ env.ASSET_NAME_WITH_EXTENSION }}
-                path: "."
+                filename: ${{ env.ZIP_FILE_NAME }}
+                path: "dist"
             - name: Upload Release Asset
               uses: shogo82148/actions-upload-release-asset@v1
               with:
                 upload_url: ${{ github.event.release.upload_url }}
-                asset_path: ${{ env.ASSET_NAME_WITH_EXTENSION }}
-                asset_name: ${{ env.ASSET_NAME_WITH_EXTENSION }}
+                asset_path: ${{ env.ZIP_FILE_NAME }}
+                asset_name: ${{ env.ZIP_FILE_NAME }}
