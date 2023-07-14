@@ -63,4 +63,5 @@ class MazeController(Controller):
             target_moves = self.__target_move_count,
             completed_moves = view_state.move_count
         )
+        self.__view.destroy()
         self.__app.set_controller(result_controller)
