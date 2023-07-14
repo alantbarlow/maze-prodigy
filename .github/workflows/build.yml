@@ -33,7 +33,7 @@ jobs:
                 pip install -r requirements.txt
                 pip install pyinstaller
             - name: Create Release Asset with Pyinstaller
-              run: pyinstaller maze_prodigy/__main__.py --name "${{ env.EXE_FILE_NAME }}" --windowed --one-file
+              run: pyinstaller maze_prodigy/__main__.py --name "${{ env.EXE_FILE_NAME }}" --windowed --onefile
                 --add-data "maze_prodigy/assets/themes/*.json${{ matrix.DATA_SEPARATOR }}themes"
                 --add-data "maze_prodigy/assets/images/*.png${{ matrix.DATA_SEPARATOR }}images"
             - name: Archive Release Assets
