@@ -72,22 +72,13 @@ class App(Stateful):
         customtkinter.set_appearance_mode("dark")
 
         window.title(self.__APP_TITLE)
-        #window.attributes("-fullscreen", True)
-        
+        window.attributes("-fullscreen", True)
 
-        if getattr(sys, 'frozen', False):
-            
-            if sys.platform == 'win32':
-                window.state("zoomed")
-            window.attributes("-fullscreen", True)
-            
-        else:
+        if not getattr(sys, 'frozen', False):
             screen = Dimensions(window.winfo_screenheight(), window.winfo_screenwidth())
             window.geometry("{}x{}".format(screen.width, screen.height))
 
         window.resizable(width = False, height = False)
-        
-
         return window
     
 
