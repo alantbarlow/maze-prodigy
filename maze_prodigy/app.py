@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
+import sys
 
 import customtkinter
 
@@ -13,7 +14,7 @@ if TYPE_CHECKING:
 
 class App(Stateful):
 
-    __APP_TITLE = "Maze Solver"
+    __APP_TITLE = "Maze Prodigy"
 
     def __init__(self):
 
@@ -48,6 +49,8 @@ class App(Stateful):
             self.__result_controller.destroy()
         
         self.__menu_controller.hide_view(False)
+        self.__window.update()
+        self.__window.update_idletasks()
 
     
     def close_window(self):
@@ -70,13 +73,13 @@ class App(Stateful):
         customtkinter.set_appearance_mode("dark")
 
         window.title(self.__APP_TITLE)
-        #window.attributes("-fullscreen", True)
-        window.geometry("{}x{}".format(
-            window.winfo_screenwidth(), 
-            window.winfo_screenheight(), 
-        ))
-        window.resizable(width = False, height = False)
+        window.attributes("-fullscreen", True)
 
+        if not getattr(sys, 'frozen', False):
+            screen = Dimensions(window.winfo_screenheight(), window.winfo_screenwidth())
+            window.geometry("{}x{}".format(screen.width, screen.height))
+
+        window.resizable(width = False, height = False)
         return window
     
 
