@@ -1,7 +1,7 @@
 name: Build Project
 on:
     release:
-        types: [created]
+        types: [ published ]
 jobs:
     create_and_upload_release_asset:
         name: Create and Upload Release Asset for ${{ matrix.OS_NAME }}
