@@ -40,8 +40,7 @@ jobs:
               uses: thedoctor0/zip-release@0.7.1
               with:
                 filename: ${{ env.ZIP_FILE_NAME }}
-                directory: "dist"
-                path: "${{ env.EXE_FILE_NAME }}.*"
+                path: "dist/${{ env.EXE_FILE_NAME }}.*"
             - name: Upload Release Asset
               uses: shogo82148/actions-upload-release-asset@v1
               with:
