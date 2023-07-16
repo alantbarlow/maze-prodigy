@@ -3,7 +3,6 @@ from typing import TYPE_CHECKING
 import sys
 
 import customtkinter
-from screeninfo import get_monitors, Enumerator
 
 from assets.themes import get_theme_path
 from controllers import MenuController, MazeController, ResultController
@@ -15,7 +14,7 @@ if TYPE_CHECKING:
 
 class App(Stateful):
 
-    __APP_TITLE = "Maze Solver"
+    __APP_TITLE = "Maze Prodigy"
 
     def __init__(self):
 
@@ -50,6 +49,8 @@ class App(Stateful):
             self.__result_controller.destroy()
         
         self.__menu_controller.hide_view(False)
+        self.__window.update()
+        self.__window.update_idletasks()
 
     
     def close_window(self):
