@@ -2,12 +2,12 @@ name: Create Release
 
 on:
   pull_request:
-    branches: [ 'main' ]
-    types: [ 'closed' ]
+    branches: [ test ]
+    types: [ closed ]
 
 jobs:
   create_release:
-    if: github.event.pull_request.merged == 'true'
+    if: ${{ github.event.pull_request.merged }}
     name: Create Release
     runs-on: ubuntu-latest
     steps:
