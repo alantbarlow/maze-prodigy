@@ -24,6 +24,11 @@ jobs:
       - name: Get Latest Release
         id: get-latest-release
         uses: pozetroninc/github-action-get-latest-release@v0.7.0
+        with:
+          owner: alantbarlow
+          repo: maze-prodigy
+          repository: ${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Get Latest Release Version
         id: get-latest_release_version
         run: |
