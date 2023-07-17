@@ -85,6 +85,8 @@ jobs:
             OS_NAME: Windows
             DATA_SEPARATOR: ";"    
     steps:
+      - name: Checkout Project Code
+        uses: actions/checkout@v3
       - name: Setup Python 3.11
         uses: actions/setup-python@v4
         with:
@@ -94,8 +96,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pyinstaller
-      - name: Checkout Project Code
-        uses: actions/checkout@v3
       - name: Build Artifact
         run: pyinstaller maze_prodigy/__main__.py --name "${{ env.EXE_FILE_NAME }}" --windowed --onefile
           --add-data "maze_prodigy/assets/themes/*.json${{ matrix.DATA_SEPARATOR }}themes"
