@@ -21,6 +21,8 @@ jobs:
     if: ${{ github.event.pull_request.merged }}
     name: Create Release
     runs-on: ubuntu-latest
+    outputs:
+      upload_url: ${{ steps.create-release.outputs.upload_url }}
     steps:
       - id: create-release
         uses: rymndhng/release-on-push-action@v0.28.0
@@ -50,6 +52,7 @@ jobs:
     env:
       EXE_FILE_NAME: MazeProdigy
       ZIP_FILE_NAME: MazeProdigy-${{ matrix.OS_NAME }}.zip
+      UPLOAD_URL: ${{ needs.create_release.outputs.upload_url }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -72,10 +75,15 @@ jobs:
           filename: ${{ env.ZIP_FILE_NAME }}
           directory: "dist"
           path: "${{ env.EXE_FILE_NAME }}.*"
-      - name: Upload release assets
-        uses: alexellis/upload-assets@0.4.0
+      - name: Upload Release Assets 
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          asset_paths: '["dist/${{ env.ZIP_FILE_NAME }}"]'
+          upload_url: ${{ env.UPLOAD_URL }}
+          asset_path: dist/${{ env.ZIP_FILE_NAME }}
+          asset_name: ${{ env.ZIP_FILE_NAME }}
+          asset_content_type: application/zip
+        
+        
   
