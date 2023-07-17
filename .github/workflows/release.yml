@@ -53,7 +53,7 @@ jobs:
           elif [ !${{ env.IS_MAIN }} ]; then
             echo "next_release_type=pre" >> $GITHUB_OUTPUT
           else
-            echo 'next_release_type="${{ steps.get-pull-request-label.outputs.match }}"' >> $GITHUB_OUTPUT
+            echo "next_release_type=${{ steps.get-pull-request-label.outputs.match }}" >> $GITHUB_OUTPUT
           fi
       - name: Get Next Release Version
         if: ${{ steps.get-next-release-type.outputs.next_release_type }} != 'none'
