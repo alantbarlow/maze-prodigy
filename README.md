@@ -1,8 +1,8 @@
 # Maze Prodigy
 > Welcome to the Maze Prodigy project! This is a Python-based game for Windows, MacOS, and Linux that challenges you to solve mazes using your keyboard's arrow keys. The project provides an interactive and engaging experience where you can test your speed and accuracy in solving various mazes.
-<!--
-> You can download the latest version of the game [_here_](https://maze_prodigy.alantbarlow.dev).
--->
+
+> You can download the latest version of the game for your chosen platform [_here_](https://github.com/alantbarlow/maze-prodigy/releases).
+
 
 
 ## Table of Contents
