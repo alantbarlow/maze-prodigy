@@ -75,9 +75,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - OS_VERSION: ubuntu-latest
-            OS_NAME: Linux
-            DATA_SEPARATOR: ":"
           - OS_VERSION: macos-latest
             OS_NAME: MacOS
             DATA_SEPARATOR: ":"
