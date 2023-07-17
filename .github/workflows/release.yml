@@ -35,7 +35,7 @@ jobs:
           if [ ${{ steps.get-latest-release.outputs.release }} == '' ]; then
             echo "version=v0.0.0" >> $GITHUB_OUTPUT
           else
-            echo 'version="${{ steps.get-latest-release.outputs.release }}"' >> $GITHUB_OUTPUT
+            echo "version=${{ steps.get-latest-release.outputs.release }}" >> $GITHUB_OUTPUT
           fi
       - name: Get Pull Request Label
         id: get-pull-request-label
