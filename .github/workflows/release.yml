@@ -8,9 +8,6 @@ on:
 permissions:
   contents: write
 
-env: 
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
 
   create_release:
@@ -20,6 +17,8 @@ jobs:
     steps:
       - id: create-release
         uses: rymndhng/release-on-push-action@v0.28.0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           bump_version_scheme: norelease
           release_name: 'Release <RELEASE_TAG>'
@@ -68,6 +67,8 @@ jobs:
           path: "${{ env.EXE_FILE_NAME }}.*"
       - name: Upload release assets
         uses: alexellis/upload-assets@0.4.0
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           asset_paths: '["dist/${{ env.ZIP_FILE_NAME }}"]'
   
