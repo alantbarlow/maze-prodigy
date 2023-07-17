@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 env:
-  GITHUB_TOKEN: ${{ github.token }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
 
@@ -60,8 +60,8 @@ jobs:
         id: get-next-release-version
         uses: christian-draeger/increment-semantic-version@1.1.0
         with:
-          current-version: ${{ steps.get-latest_release_version.outputs.version }}
-          version-fragment: ${{ steps.get-next-release-type.outputs.next_release_type }}
+          current-version: '${{ steps.get-latest_release_version.outputs.version }}'
+          version-fragment: '${{ steps.get-next-release-type.outputs.next_release_type }}'
 
 
   build_artifacts:
@@ -126,7 +126,7 @@ jobs:
         id: create-release
         uses: meeDamian/github-release@2.0
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           tag: 'v${{ needs.get_next_release_version.outputs.next_release_version }}'
           name: 'Release v${{ needs.get_next_release_version.outputs.next_release_version }}'
           commitish: ${{ github.event.pull_request.merge_commit_sha }}
