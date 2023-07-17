@@ -68,7 +68,7 @@ jobs:
           path: "${{ env.EXE_FILE_NAME }}.*"
       - name: Get Upload URL
         id: get_upload_url
-        uses: bruceadams/get-release@v1.3.2
+        uses: jossef/action-latest-release-info@v1.2.1
       - name: Upload Release Asset
         uses: shogo82148/actions-upload-release-asset@v1
         with:
