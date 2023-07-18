@@ -133,5 +133,5 @@ jobs:
           commitish: ${{ github.event.pull_request.merge_commit_sha }}
           prerelease: ${{ needs.get_next_release_version.outputs.next_release_type == 'pre' }}
           files: >
-            MazeProdigy-Windows-v${{ env.NEXT_RELEASE_VERSION }}:artifacts/mazeprodigy-windows
-            MazeProdigy-MacOS-v${{ env.NEXT_RELEASE_VERSION }}:artifacts/mazeprodigy-macos
+            MazeProdigy-Windows-v${{ env.NEXT_RELEASE_VERSION }}:artifacts
+            MazeProdigy-MacOS-v${{ env.NEXT_RELEASE_VERSION }}:artifacts
