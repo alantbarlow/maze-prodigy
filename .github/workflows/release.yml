@@ -132,6 +132,8 @@ jobs:
           name: 'Release v${{ needs.get_next_release_version.outputs.next_release_version }}'
           commitish: ${{ github.event.pull_request.merge_commit_sha }}
           prerelease: ${{ needs.get_next_release_version.outputs.next_release_type == 'pre' }}
+          gzip: false
           files: >
-            MazeProdigy-Windows-v${{ env.NEXT_RELEASE_VERSION }}:artifacts
-            MazeProdigy-MacOS-v${{ env.NEXT_RELEASE_VERSION }}:artifacts
+            artifacts/MazeProdigy-MacOS/MazeProdigy-MacOS.zip
+            artifacts/MazeProdigy-Windows/MazeProdigy-Windows.zip
+            
