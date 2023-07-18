@@ -46,7 +46,7 @@ jobs:
       - name: Get Next Release Type
         id: get-next-release-type
         env:
-          IS_MAIN: ${{ github.base_ref }} == 'main'
+          IS_MAIN: ${{ github.base_ref == 'main' }}
         run: |
           if [ ${{ env.IS_MAIN }} && ${{ steps.get-pull-request-label.outputs.match }} == 'none' ]; then
             echo "next_release_type=none" >> $GITHUB_OUTPUT
